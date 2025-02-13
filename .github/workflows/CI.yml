@@ -43,7 +43,7 @@ jobs:
         id: setup_release
         uses: LizardByte/setup-release-action@v2025.102.14715
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
 
   setup_flatpak_matrix:
     name: Setup Flatpak Matrix
