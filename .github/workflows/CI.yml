@@ -496,20 +496,20 @@ jobs:
             --xml-pretty \
             -o coverage.xml
 
-      - name: Upload coverage
-        # any except canceled or skipped
-        if: >-
-          always() &&
-          (steps.test_report.outcome == 'success') &&
-          startsWith(github.repository, 'LizardByte/')
-        uses: codecov/codecov-action@v5
-        with:
-          disable_search: true
-          fail_ci_if_error: true
-          files: ./build/coverage.xml
-          flags: ${{ runner.os }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
+      # - name: Upload coverage
+      #   # any except canceled or skipped
+      #   if: >-
+      #     always() &&
+      #     (steps.test_report.outcome == 'success') &&
+      #     startsWith(github.repository, 'LizardByte/')
+      #   uses: codecov/codecov-action@v5
+      #   with:
+      #     disable_search: true
+      #     fail_ci_if_error: true
+      #     files: ./build/coverage.xml
+      #     flags: ${{ runner.os }}
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     verbose: true
 
       - name: Create/Update GitHub Release
         if: ${{ needs.setup_release.outputs.publish_release == 'true' }}
@@ -650,18 +650,18 @@ jobs:
 
           echo "DISPLAY=${DISPLAY}" >> $GITHUB_ENV
 
-      - name: Validate Homebrew Formula
-        id: test
-        if: |
-          matrix.release != true
-        uses: LizardByte/homebrew-release-action@v2024.1115.14934
-        with:
-          formula_file: ${{ github.workspace }}/homebrew/sunshine.rb
-          git_email: ${{ secrets.GH_BOT_EMAIL }}
-          git_username: ${{ secrets.GH_BOT_NAME }}
-          publish: false
-          token: ${{ secrets.GH_BOT_TOKEN }}
-          validate: true
+      # - name: Validate Homebrew Formula
+      #   id: test
+      #   if: |
+      #     matrix.release != true
+      #   uses: LizardByte/homebrew-release-action@v2024.1115.14934
+      #   with:
+      #     formula_file: ${{ github.workspace }}/homebrew/sunshine.rb
+      #     git_email: ${{ secrets.GH_BOT_EMAIL }}
+      #     git_username: ${{ secrets.GH_BOT_NAME }}
+      #     publish: false
+      #     token: ${{ secrets.GH_BOT_TOKEN }}
+      #     validate: true
 
       - name: Generate gcov report
         # any except canceled or skipped
@@ -695,23 +695,23 @@ jobs:
             --xml-pretty \
             -o coverage.xml
 
-      - name: Upload coverage
-        # any except canceled or skipped
-        # TODO: enable this once coverage report is fixed
-        if: false
-        # if: >-
-        #   always() &&
-        #   matrix.release != true &&
-        #   (steps.test_report.outcome == 'success') &&
-        #   startsWith(github.repository, 'LizardByte/')
-        uses: codecov/codecov-action@v5
-        with:
-          disable_search: true
-          fail_ci_if_error: true
-          files: ./build/coverage.xml
-          flags: ${{ matrix.os_name }}-${{ matrix.os_version }} (Homebrew)
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
+      # - name: Upload coverage
+      #   # any except canceled or skipped
+      #   # TODO: enable this once coverage report is fixed
+      #   if: false
+      #   # if: >-
+      #   #   always() &&
+      #   #   matrix.release != true &&
+      #   #   (steps.test_report.outcome == 'success') &&
+      #   #   startsWith(github.repository, 'LizardByte/')
+      #   uses: codecov/codecov-action@v5
+      #   with:
+      #     disable_search: true
+      #     fail_ci_if_error: true
+      #     files: ./build/coverage.xml
+      #     flags: ${{ matrix.os_name }}-${{ matrix.os_version }} (Homebrew)
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     verbose: true
 
       - name: Create/Update GitHub Release
         if: >-
@@ -748,19 +748,19 @@ jobs:
           echo "New formula:"
           cat $formula_file
 
-      - name: Upload Homebrew Beta Formula
-        if: >-
-          github.repository_owner == 'LizardByte' &&
-          matrix.release &&
-          needs.setup_release.outputs.publish_release == 'true'
-        uses: LizardByte/homebrew-release-action@v2024.1115.14934
-        with:
-          formula_file: ${{ github.workspace }}/homebrew/sunshine-beta.rb
-          git_email: ${{ secrets.GH_BOT_EMAIL }}
-          git_username: ${{ secrets.GH_BOT_NAME }}
-          publish: true
-          token: ${{ secrets.GH_BOT_TOKEN }}
-          validate: false
+      # - name: Upload Homebrew Beta Formula
+      #   if: >-
+      #     github.repository_owner == 'LizardByte' &&
+      #     matrix.release &&
+      #     needs.setup_release.outputs.publish_release == 'true'
+      #   uses: LizardByte/homebrew-release-action@v2024.1115.14934
+      #   with:
+      #     formula_file: ${{ github.workspace }}/homebrew/sunshine-beta.rb
+      #     git_email: ${{ secrets.GH_BOT_EMAIL }}
+      #     git_username: ${{ secrets.GH_BOT_NAME }}
+      #     publish: true
+      #     token: ${{ secrets.GH_BOT_TOKEN }}
+      #     validate: false
 
   build_win:
     name: Windows
@@ -998,20 +998,20 @@ jobs:
             --xml-pretty \
             -o coverage.xml
 
-      - name: Upload coverage
-        # any except canceled or skipped
-        if: >-
-          always() &&
-          (steps.test_report.outcome == 'success') &&
-          startsWith(github.repository, 'LizardByte/')
-        uses: codecov/codecov-action@v5
-        with:
-          disable_search: true
-          fail_ci_if_error: true
-          files: ./build/coverage.xml
-          flags: ${{ runner.os }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
+      # - name: Upload coverage
+      #   # any except canceled or skipped
+      #   if: >-
+      #     always() &&
+      #     (steps.test_report.outcome == 'success') &&
+      #     startsWith(github.repository, 'LizardByte/')
+      #   uses: codecov/codecov-action@v5
+      #   with:
+      #     disable_search: true
+      #     fail_ci_if_error: true
+      #     files: ./build/coverage.xml
+      #     flags: ${{ runner.os }}
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     verbose: true
 
       - name: Package Windows Debug Info
         working-directory: build
