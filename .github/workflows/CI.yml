@@ -307,7 +307,7 @@ jobs:
   #         name: ${{ needs.setup_release.outputs.release_tag }}
   #         prerelease: true
   #         tag: ${{ needs.setup_release.outputs.release_tag }}
-  #         token: ${{ secrets.GH_BOT_TOKEN }}
+  #         token: ${{ secrets. }}
 
   # build_linux:
   #   name: Linux ${{ matrix.type }}
@@ -726,7 +726,7 @@ jobs:
           name: ${{ needs.setup_release.outputs.release_tag }}
           prerelease: true
           tag: ${{ needs.setup_release.outputs.release_tag }}
-          token: ${{ secrets.GH_BOT_TOKEN }}
+          token: ${{ secrets.TOKEN }}
 
       # - name: Patch homebrew formula
       #   # create beta version of the formula
@@ -1042,4 +1042,4 @@ jobs:
   #         name: ${{ needs.setup_release.outputs.release_tag }}
   #         prerelease: true
   #         tag: ${{ needs.setup_release.outputs.release_tag }}
-  #         token: ${{ secrets.GH_BOT_TOKEN }}
+  #         token: ${{ secrets. }}
